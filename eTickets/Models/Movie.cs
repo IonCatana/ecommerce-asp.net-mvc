@@ -1,4 +1,6 @@
-﻿using eTickets.Data.Enums;
+﻿using eTickets.Data;
+using eTickets.Data.Base;
+using eTickets.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eTickets.Models
 {
-    public class Movie
+    public class Movie : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -22,14 +24,14 @@ namespace eTickets.Models
         public MovieCategory MovieCategory { get; set; }
 
         //Relationships
-        public List<Actor_Movie> Actors_Movies{ get; set; }
+        public List<Actor_Movie> Actors_Movies { get; set; }
 
         //Cinema
         public int CinemaId { get; set; }
         [ForeignKey("CinemaId")]
-        public Cinema Cinema { get; set; }  
+        public Cinema Cinema { get; set; }
 
-        //Producer       
+        //Producer
         public int ProducerId { get; set; }
         [ForeignKey("ProducerId")]
         public Producer Producer { get; set; }
