@@ -49,5 +49,24 @@ namespace eTickets.Controllers
             if (cinemaDetails == null) return View("NotFound");
             return View(cinemaDetails);
         }
+
+        //Get: Cinemas/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+            return View(cinemaDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Cinema cinema)
+        {
+            if (!ModelState.IsValid)
+            {
+                await _service.UpdateAsync(id, cinema);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cinema);
+        }        
     }
 }
