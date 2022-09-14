@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-
 </head>
 <body>
     <header>
@@ -41,6 +40,7 @@
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
+
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
@@ -48,24 +48,33 @@
                     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
                         <i class="bi bi-box-arrow-in-right"></i> Log in
                     </a>
+                    <span style="padding: 5px;"></span>
+
                     <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
                         <i class="bi bi-person-plus"></i> Register
                     </a>
+                    <span style="padding: 5px;"></span>
 
-                   @* User profile section*@
+                    @*User profile section*@
                     <div class="dropdown">
-                    <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-badge"></i> Hello User
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="profile-btn">
-                        <li>
-                            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                                <i class="bi bi-list"></i> Orders
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
+                                aria-expanded="false">
+                            <i class="bi bi-person-badge"></i> Hello User
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                    <i class="bi bi-list"></i> Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span style="padding: 5px;"></span>
+                    <form asp-controller="Account" asp-action="Logout">
+                        <button class="btn btn-outline-danger my-2 my-sm-0">
+                            <i class="bi bi-box-arrow-in-right"></i> Log out
+                        </button>
+                    </form>
 
                 </div>
             </div>
@@ -86,7 +95,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
