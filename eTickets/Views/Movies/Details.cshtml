@@ -17,10 +17,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="@Model.ImageURL" width="100%" alt="@Model.Name">
+                <div class="col-md-6">
+                    <img src="@Model.ImageURL" style="width: 100%" alt="@Model.Name">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="card-body">
                         <p class="card-text">@Model.Description</p>
                         <p class="card-text">
@@ -60,7 +60,7 @@
                                 @foreach (var actor in Model.Actors_Movies)
                                 {
                                     <div class="column text-center">
-                                        <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureURL" style="max-width: 150px" />
+                                        <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureURL" style="width: 150px; height:150px" />
                                         <br />
                                         <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
                                     </div>
