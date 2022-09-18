@@ -4,6 +4,7 @@ using eTickets.Data.ViewModels;
 using eTickets.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,14 @@ namespace eTickets.Controllers
             _signInManager = signInManager;
             _context = context;
         }
+
+
+        public async Task<IActionResult> Users()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
+        }
+
 
         public IActionResult Login() => View(new LoginVM());
 
@@ -50,6 +59,7 @@ namespace eTickets.Controllers
             TempData["Error"] = "Wrong credentials. Please, try again!";
             return View(loginVM);
         }
+
 
         public IActionResult Register() => View(new RegisterVM());
 
@@ -85,5 +95,6 @@ namespace eTickets.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Movies");
         }
+
     }
 }
